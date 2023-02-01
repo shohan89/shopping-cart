@@ -17,24 +17,25 @@ function updatePhoneQuantity (isIncrease){
   return newPhoneQuantity;
 }
 
-
-// get the phone plus button and add event listener
-document.getElementById('phone-plus-btn').addEventListener('click', ()=>{
-  const newPhoneQuantity = updatePhoneQuantity( true );
+//  writing a function for update total phone price
+function updateTotalPhonePrice( newPhoneQuantity ){
   // get the phone price
   const totalPhonePrice = newPhoneQuantity * 1219;
 
   const phonePriceElement = document.getElementById('phone-price');
   phonePriceElement.innerText = totalPhonePrice;
+} 
+
+// get the phone plus button and add event listener
+document.getElementById('phone-plus-btn').addEventListener('click', ()=>{
+  const newPhoneQuantity = updatePhoneQuantity( true );
+
+  updateTotalPhonePrice( newPhoneQuantity );
 });
 
 // get the phone minus button and add event listener
 document.getElementById('phone-minus-btn').addEventListener('click', ()=>{
   const newPhoneQuantity = updatePhoneQuantity( false );
 
-  // get the phone price
-  const totalPhonePrice = newPhoneQuantity * 1219;
-
-  const phonePriceElement = document.getElementById('phone-price');
-  phonePriceElement.innerText = totalPhonePrice;
+  updateTotalPhonePrice( newPhoneQuantity );
 });
