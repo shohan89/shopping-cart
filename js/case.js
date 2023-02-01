@@ -2,6 +2,7 @@ function updateCaseQuantity ( isIncrease ) {
   const caseInputField = document.getElementById('case-input-field');
   const caseInputStr = caseInputField.value;
   const previousCaseQuantity = parseInt(caseInputStr);
+
   let newCaseQuantity;
 
   if ( isIncrease === true ) {
@@ -12,17 +13,25 @@ function updateCaseQuantity ( isIncrease ) {
   }
 
   caseInputField.value = newCaseQuantity;
-  
+
+  return newCaseQuantity;
 }
 
 
 document.getElementById('case-btn-plus').addEventListener('click', ()=>{
-  updateCaseQuantity( true );
+
+  const newCaseQuantity = updateCaseQuantity( true );
+  const caseTotalPrice = newCaseQuantity * 59;
+
+  const casePriceElement = document.getElementById('case-price');
+  casePriceElement.innerText = caseTotalPrice;
+
 })
 
 
 // decrease button state 
 document.getElementById('case-btn-minus').addEventListener('click', () =>{
+
   updateCaseQuantity( false );
-  
+
 })
