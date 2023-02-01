@@ -32,6 +32,10 @@ document.getElementById('case-btn-plus').addEventListener('click', ()=>{
 // decrease button state 
 document.getElementById('case-btn-minus').addEventListener('click', () =>{
 
-  updateCaseQuantity( false );
+  const newCaseQuantity = updateCaseQuantity( false );
+  const caseTotalPrice = newCaseQuantity * 59;
+
+  const casePriceElement = document.getElementById('case-price');
+  casePriceElement.innerText = caseTotalPrice;
 
 })
