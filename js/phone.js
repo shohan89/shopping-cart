@@ -26,25 +26,6 @@ function updateTotalPhonePrice( newPhoneQuantity ){
   phonePriceElement.innerText = totalPhonePrice;
 } 
 
-// making a function where we can get text element value by id
-function getTextElementValueById(elementId) {
-  const phoneTotalElement = document.getElementById(elementId);
-  const currentPhoneTotalStr = phoneTotalElement.innerText;
-  const currentPhoneTotal = parseInt( currentPhoneTotalStr );
-  return currentPhoneTotal;
-}
-
-// making a function where we can calculate total subtotal
-function calculateSubTotal(){
-
-  const currentPhoneTotal = getTextElementValueById( 'phone-price' );
-  const currentCaseTotal = getTextElementValueById( 'case-price' );
-
-  const currentSubTotal = currentPhoneTotal + currentCaseTotal;
-  const currentSubTotalElement = document.getElementById('sub-total');
-  currentSubTotalElement.innerText = currentSubTotal;
-}
-
 // get the phone plus button and add event listener
 document.getElementById('phone-plus-btn').addEventListener('click', ()=>{
   const newPhoneQuantity = updatePhoneQuantity( true );
