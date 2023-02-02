@@ -34,6 +34,17 @@ function getTextElementValueById(elementId) {
   return currentPhoneTotal;
 }
 
+// making a function where we can calculate total subtotal
+function calculateSubTotal(){
+
+  const currentPhoneTotal = getTextElementValueById( 'phone-price' );
+  const currentCaseTotal = getTextElementValueById( 'case-price' );
+
+  const currentSubTotal = currentPhoneTotal + currentCaseTotal;
+  const currentSubTotalElement = document.getElementById('sub-total');
+  currentSubTotalElement.innerText = currentSubTotal;
+}
+
 // get the phone plus button and add event listener
 document.getElementById('phone-plus-btn').addEventListener('click', ()=>{
   const newPhoneQuantity = updatePhoneQuantity( true );
@@ -41,12 +52,7 @@ document.getElementById('phone-plus-btn').addEventListener('click', ()=>{
   updateTotalPhonePrice( newPhoneQuantity );
 
   // calculate total expense
-  const currentPhoneTotal = getTextElementValueById( 'phone-price' );
-  const currentCaseTotal = getTextElementValueById( 'case-price' );
-
-  const currentSubTotal = currentPhoneTotal + currentCaseTotal;
-  const currentSubTotalElement = document.getElementById('sub-total');
-  currentSubTotalElement.innerText = currentSubTotal;
+  calculateSubTotal();
 
 });
 
@@ -55,4 +61,5 @@ document.getElementById('phone-minus-btn').addEventListener('click', ()=>{
   const newPhoneQuantity = updatePhoneQuantity( false );
 
   updateTotalPhonePrice( newPhoneQuantity );
+  calculateSubTotal();
 });
